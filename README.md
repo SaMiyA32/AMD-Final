@@ -1,56 +1,75 @@
-# Welcome to your Expo app 👋
+# Crystal Clear - Premium Cleaning Services
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Crystal Clear is a cross-platform mobile application developed using React Native Expo for booking and managing professional cleaning services. It provides a seamless experience for both customers (to book services) and administrators (to manage orders).
 
-## Get started
+## Features
 
-1. Install dependencies
+- **User Authentication**: Secure Login & Registration using Firebase Auth.
+- **Role-Based Access**: Separate interfaces for Customers and Administrators.
+- **Service Booking (CRUD)**:
+  - **Create**: Book various cleaning services (House Cleaning, Office Cleaning, Deep Clean, etc.) with date and time pickers.
+  - **Read**: View appointment history and statuses (Pending, Accepted, Rejected, Cancelled).
+  - **Update**: Edit or reschedule pending appointments. Admins can update order statuses.
+  - **Delete**: Cancel appointments with reasons.
+- **Rating & Reviews System**: Customers can leave, edit, and delete ratings and reviews for completed services.
+- **Email Notifications (Innovation)**: Integrated Node.js backend to send real-time automated emails to users when their order is Accepted, Rejected, or Cancelled (Powered by Brevo SMTP).
+- **State Management**: Implemented using React Context API (`AuthContext`) for global state management of user sessions.
+- **Navigation**: Uses Expo Router with both Tab Navigation (Main App) and Stack Navigation (Auth/Admin flows).
 
-   ```bash
-   npm install
-   ```
+## Technologies Used
 
-2. Start the app
+- **Frontend**: React Native, Expo, NativeWind (Tailwind CSS for styling).
+- **Backend/Database**: Firebase Firestore (BaaS) and Node.js with Express for email server.
+- **Authentication**: Firebase Authentication.
+- **State Management**: React Context API.
+- **Email Service**: Nodemailer & Brevo SMTP.
 
-   ```bash
-   npx expo start
-   ```
+## Project Structure
 
-In the output, you'll find options to open the app in a
+- `/app` - Expo Router screens and navigation (Stack and Tabs).
+- `/components` - Reusable UI components.
+- `/context` - Global state management (`AuthContext`).
+- `/services` - Firebase configuration and API services.
+- `/email-server` - Node.js backend for sending email notifications.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Setup & Run Instructions
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 1. Prerequisites
+- Node.js installed on your machine.
+- Expo Go app installed on your physical mobile device (or an Android/iOS Emulator on your PC).
 
-## Get a fresh project
-
-When you're ready, run:
-
+### 2. Install Dependencies
+Navigate to the project root and install the required packages:
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 3. Configure Environment Variables (For Email Server)
+Navigate to the `email-server` directory and create a `.env` file based on `.env.example`:
+```bash
+cd email-server
+```
+Create a `.env` file inside `email-server` and add your Brevo SMTP credentials:
+```env
+EMAIL_USER=your_brevo_smtp_login
+EMAIL_PASS=your_brevo_smtp_password
+SENDER_EMAIL=your_sender_email@gmail.com
+```
 
-### Other setup steps
+### 4. Run the Application
+You can start both the React Native Expo app and the Node.js Email Server simultaneously using the following command from the project root:
+```bash
+npm run dev
+```
+*(This command uses a custom script that launches the Node server in a new window and starts the Expo CLI interactively).*
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+### 5. Open on your Device
+- **Android**: Scan the QR code from the terminal using the Expo Go app.
+- **iOS**: Scan the QR code using the default Camera app.
+- **Web**: Press `w` in the terminal to open the app in a web browser.
 
-## Learn more
+## Admin Access
+To access the Admin Dashboard, log in using the designated admin credentials (configured via Firebase Auth).
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Author
+Developed for ITS 2127 - Advanced Mobile Developer Final Project.
