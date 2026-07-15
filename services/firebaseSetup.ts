@@ -21,3 +21,4 @@ export const firestoreDB = firebase.firestore();
 console.log('--- FIREBASE CONFIG INITIALIZED ---');
 console.log('auth:', !!auth);
 console.log('firestoreDB:', !!firestoreDB, typeof firestoreDB?.collection);
+  

@@ -71,5 +71,4 @@ npm run dev
 ## Admin Access
 To access the Admin Dashboard, log in using the designated admin credentials (configured via Firebase Auth).
 
-## Author
-Developed for ITS 2127 - Advanced Mobile Developer Final Project.
+

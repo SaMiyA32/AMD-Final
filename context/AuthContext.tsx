@@ -1,9 +1,16 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { auth, firestoreDB } from '../services/firebaseSetup';
 
-export const AuthContext = createContext();
+type AuthContextType = {
+  user: any;
+  userData: any;
+  loading: boolean;
+  logout: () => Promise<void>;
+};
 
-export const AuthProvider = ({ children }) => {
+export const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);

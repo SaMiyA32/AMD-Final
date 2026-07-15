@@ -25,7 +25,7 @@ transporter.verify((error, success) => {
   } else {
     console.log("Server is ready to take our messages!");
   }
-});
+}); 
 
 app.post('/send-email', (req, res) => {
   const { toEmail, userName, serviceType, date, time, status, reason } = req.body;
